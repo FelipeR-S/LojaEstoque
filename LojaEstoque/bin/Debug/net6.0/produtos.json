@@ -1,0 +1,30 @@
+ [
+    {
+      "nome": "Chinelo",
+      "valor": 19.90
+    },
+    {
+      "nome": "Bolsa",
+      "valor": 99.80
+    },
+    {
+      "nome": "Sapato",
+      "valor": 185.44
+    },
+    {
+      "nome": "Boné",
+      "valor": 25.88
+    },
+    {
+      "nome": "Pulseira",
+      "valor": 10.99
+    },
+    {
+      "nome": "Blusa",
+      "valor": 98.23
+    },
+  {
+    "nome": "Camiseta",
+    "valor": 35.50
+  }
+ ]

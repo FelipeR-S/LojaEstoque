@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using LojaEstoque.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace LojaEstoque.Data
 {
@@ -9,15 +10,18 @@ namespace LojaEstoque.Data
     public class DataService : IDataService
     {
         private readonly ApplicationDbContext _context;
+        private readonly IProdutoRepository _produtoRepository;
 
-        public DataService(ApplicationDbContext context)
+        public DataService(ApplicationDbContext context, IProdutoRepository produtoRepository)
         {
             _context = context;
+            _produtoRepository = produtoRepository;
         }
 
         public async Task InitDB()
         {
             await _context.Database.MigrateAsync();
+            await _produtoRepository.InsereProdutosDB();
         }
     }
 }

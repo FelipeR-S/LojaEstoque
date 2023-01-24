@@ -70,3 +70,4 @@ E:\Documentos\FELIPE\Programação\Projetos\LojaEstoque\LojaEstoque\obj\Debug\ne
 E:\Documentos\FELIPE\Programação\Projetos\LojaEstoque\LojaEstoque\obj\Debug\net6.0\LojaEstoque.pdb
 E:\Documentos\FELIPE\Programação\Projetos\LojaEstoque\LojaEstoque\obj\Debug\net6.0\LojaEstoque.genruntimeconfig.cache
 E:\Documentos\FELIPE\Programação\Projetos\LojaEstoque\LojaEstoque\obj\Debug\net6.0\ref\LojaEstoque.dll
+E:\Documentos\FELIPE\Programação\Projetos\LojaEstoque\LojaEstoque\bin\Debug\net6.0\produtos.json

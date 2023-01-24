@@ -9,8 +9,9 @@ namespace LojaEstoque.Repositories
     {
         Task<List<Produto>> GetAllProdutos();
         Task<Produto?> GetProduto(int id);
-        Task<string> UpdateProduto(int id, string nome);
+        Task<string> UpdateProduto(int id, string nome, double valor);
         Task<string> DeleteProduto(int id);
+        Task InsereProdutosDB();
     }
     public class ProdutoRepository : BaseRepository<Produto>, IProdutoRepository
     {
@@ -27,12 +28,13 @@ namespace LojaEstoque.Repositories
             return await _dbSet.FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public async Task<string> UpdateProduto(int id, string nome)
+        public async Task<string> UpdateProduto(int id, string nome, double valor)
         {
             var produto = await _dbSet.FirstOrDefaultAsync(p => p.Id == id);
             if (produto is null) return $"Não foi possível alterar O produto de ID nº {id}!";
 
             produto.Nome = nome;
+            produto.Valor = valor;
             await _context.SaveChangesAsync();
             return $"O produto de ID nº {id} foi atualizado!";
         }
@@ -52,15 +54,26 @@ namespace LojaEstoque.Repositories
             var produtos = await GetProdutosJson();
             if (produtos is null) return;
 
-            foreach (var produto in produtos) await _dbSet.AddAsync(produto);
+            foreach (var produto in produtos) 
+            {
+                if (!await _dbSet.AnyAsync(p => p.Nome == produto.Nome)) 
+                    await _dbSet.AddAsync(new Produto(produto.Nome, produto.Valor));
+            } 
 
             await _context.SaveChangesAsync();
         }
 
-        private static async Task<List<Produto>?> GetProdutosJson()
+        private static async Task<List<ProdutoJson>?> GetProdutosJson()
         {
             var json = await File.ReadAllTextAsync("produtos.json");
-            return JsonConvert.DeserializeObject<List<Produto>>(json);
+            var produtos = JsonConvert.DeserializeObject<List<ProdutoJson>>(json);
+            return produtos;
         }
+    }
+
+    public class ProdutoJson
+    {
+        public string Nome { get; set; } = string.Empty;
+        public double Valor { get; set; }
     }
 }
