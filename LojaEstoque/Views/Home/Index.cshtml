@@ -13,12 +13,12 @@
                 <input type="text" class="header__busca--input" placeholder="Pesquisar produtos">
                 <button class="header__busca--button"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
-            <div class="autocomplete">
+            <ul class="autocomplete">
                 @foreach (var produto in @Model)
                 {
                     <li aria-hidden="true">@produto.Nome</li>
                 }
-            </div>
+            </ul>
         </div>
         <div class="header__cadastro">
         <a class="cadastro--btn btn-default" asp-action="Cadastro">Novo Item</a></div>

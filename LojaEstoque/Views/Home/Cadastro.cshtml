@@ -2,39 +2,38 @@
 
 @{
     ViewData["Title"] = "Cadastro";
+    var titulo = "Cadastro de produto"; 
+    if (@Model.Nome != "") titulo = "Editar produto";
 }
+
 <asp:Content ID="Inicio" ContentPlaceHolderID="Inicio" runat="server">
 	<script type="module" src="~/js/cadastro.js"></script>
 </asp:Content>
-<h1>Cadastro</h1>
+    <div class="layout__form-cadastro">
+        <h1>@titulo</h1>
 
-<h4>Produto</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Cadastro">
+                <form class="form-cadastro" asp-action="Cadastro">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Nome" class="control-label"></label>
+                <label asp-for="Nome" class="control-label">Nome do produto: </label>
                 <input asp-for="Nome" class="form-control" />
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Valor" class="control-label"></label>
+                <label asp-for="Valor" class="control-label">Valor do Produto: </label>
                 <input asp-for="Valor" class="form-control" />
                 <span asp-validation-for="Valor" class="text-danger"></span>
             </div>
-            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="Id"/>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Cadastrar" class="form-cadastro--btn-enviar btn-default"/>
             </div>
         </form>
+        <div>
+    <a class="form-cadastro--voltar btn-default" asp-action="Index">Voltar para lista de produtos</a>
+</div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
