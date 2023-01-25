@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LojaEstoque.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230124203229_ValorProduto")]
+    [Migration("20230125063207_ValorProduto")]
     partial class ValorProduto
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,10 +34,11 @@ namespace LojaEstoque.Data.Migrations
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.Property<double>("Valor")
-                        .HasColumnType("float");
+                    b.Property<decimal>("Valor")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 

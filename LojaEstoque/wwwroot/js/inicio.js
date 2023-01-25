@@ -57,6 +57,10 @@ const Produto = {
     }
 }
 
+window.addEventListener("load", (e) => {
+    if (mensagemServer != null && mensagemServer != "") modalClass.OpenModal(mensagemServer, true);
+})
+
 Produto.Excluir();
 Search.InputListener();
 Search.GetProduto();

@@ -2,8 +2,12 @@
 
 @{
     ViewData["Title"] = "Cadastro";
-    var titulo = "Cadastro de produto"; 
-    if (@Model.Nome != "") titulo = "Editar produto";
+    var titulo = "Cadastro de produto";
+    var btn = "Cadastrar";
+    if (@Model.Nome != ""){
+        titulo = "Editar produto";
+        btn = "Atualizar";
+    }
 }
 
 <asp:Content ID="Inicio" ContentPlaceHolderID="Inicio" runat="server">
@@ -12,21 +16,21 @@
     <div class="layout__form-cadastro">
         <h1>@titulo</h1>
 
-                <form class="form-cadastro" asp-action="Cadastro">
+                <form class="form-cadastro" asp-action="InsertUpdate" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Nome" class="control-label">Nome do produto: </label>
-                <input asp-for="Nome" class="form-control" />
+                <input asp-for="Nome" class="form-control" minlength="5" maxlength="50" value="@Model.Nome"/>
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Valor" class="control-label">Valor do Produto: </label>
-                <input asp-for="Valor" class="form-control" />
+                <input asp-for="Valor" class="form-control produto--valor" value="@Model.Valor.ToString().Replace(".", ",")"/>
                 <span asp-validation-for="Valor" class="text-danger"></span>
             </div>
             <input type="hidden" asp-for="Id"/>
             <div class="form-group">
-                <input type="submit" value="Cadastrar" class="form-cadastro--btn-enviar btn-default"/>
+                <input type="submit" value="@btn" class="form-cadastro--btn-enviar btn-default"/>
             </div>
         </form>
         <div>

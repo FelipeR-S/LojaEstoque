@@ -2,6 +2,7 @@ using LojaEstoque.Data;
 using LojaEstoque.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +27,12 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IDataService, DataService>();
 builder.Services.AddTransient<ApplicationDbContext>();
 builder.Services.AddTransient<IProdutoRepository, ProdutoRepository>();
+
+builder.Services.AddRazorPages().AddMvcOptions(options =>
+{
+    options.ModelBindingMessageProvider.SetValueMustBeANumberAccessor(
+        x => "O valor precisa ser numérico!");
+});
 
 var app = builder.Build();
 
@@ -54,6 +61,17 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseSession();
+
+app.Use(async (context, next) =>
+{
+    var currentThreadCulture = (CultureInfo)Thread.CurrentThread.CurrentCulture.Clone();
+    currentThreadCulture.NumberFormat = NumberFormatInfo.InvariantInfo;
+
+    Thread.CurrentThread.CurrentCulture = currentThreadCulture;
+    Thread.CurrentThread.CurrentUICulture = currentThreadCulture;
+
+    await next();
+});
 
 app.UseAuthentication();
 app.UseAuthorization();

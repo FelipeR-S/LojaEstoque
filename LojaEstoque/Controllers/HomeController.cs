@@ -18,6 +18,8 @@ namespace LojaEstoque.Controllers
 
         public async Task<IActionResult> Index()
         {
+            TempData["mensagem"] = HttpContext.Session.GetString("mensagem");
+            HttpContext.Session.SetString("mensagem", "");
             return View(await _produtoRepository.GetAllProdutos());
         }
 
@@ -29,6 +31,23 @@ namespace LojaEstoque.Controllers
             if (produtoDB is not null) produto = produtoDB;
 
             return View(produto);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> InsertUpdate(Produto produto)
+        {   
+            var mensagem = "";
+            var produtoDb = await _produtoRepository.GetProduto(produto.Id);
+                if(produtoDb is null)
+            {
+                mensagem = await _produtoRepository.CadastraProduto(produto);
+                HttpContext.Session.SetString("mensagem", mensagem);
+                return RedirectToAction("Index");
+            }
+            mensagem = await _produtoRepository.UpdateProduto(produto.Id, produto.Nome, produto.Valor);
+            HttpContext.Session.SetString("mensagem", mensagem);
+            return RedirectToAction("Index");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

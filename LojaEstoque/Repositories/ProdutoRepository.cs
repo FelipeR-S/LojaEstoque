@@ -9,9 +9,10 @@ namespace LojaEstoque.Repositories
     {
         Task<List<Produto>> GetAllProdutos();
         Task<Produto?> GetProduto(int id);
-        Task<string> UpdateProduto(int id, string nome, double valor);
+        Task<string> UpdateProduto(int id, string nome, decimal valor);
         Task<string> DeleteProduto(int id);
         Task InsereProdutosDB();
+        Task<string> CadastraProduto(Produto produto);
     }
     public class ProdutoRepository : BaseRepository<Produto>, IProdutoRepository
     {
@@ -23,15 +24,28 @@ namespace LojaEstoque.Repositories
             return await _dbSet.ToListAsync();
         }
 
+        public async Task<string> CadastraProduto(Produto produto)
+        {
+            if (produto is not null)
+            {
+                var produtoDB = await _dbSet.FirstOrDefaultAsync(p => p.Nome == produto.Nome);
+                if (produtoDB is not null) return "Não foi possível cadastrar produto!\nProduto já consta na base de dados.";
+                await _dbSet.AddAsync(produto);
+                await _context.SaveChangesAsync();
+                return "Produto Cadastrado";
+            }
+            return "Ocorreu um erro ao cadastrar o produto!\nFavor tente novamente!";
+        }
+
         public async Task<Produto?> GetProduto(int id)
         {
             return await _dbSet.FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public async Task<string> UpdateProduto(int id, string nome, double valor)
+        public async Task<string> UpdateProduto(int id, string nome, decimal valor)
         {
             var produto = await _dbSet.FirstOrDefaultAsync(p => p.Id == id);
-            if (produto is null) return $"Não foi possível alterar O produto de ID nº {id}!";
+            if (produto is null) return $"Não foi possível encontrar o produto de ID nº {id}!";
 
             produto.Nome = nome;
             produto.Valor = valor;
@@ -74,6 +88,6 @@ namespace LojaEstoque.Repositories
     public class ProdutoJson
     {
         public string Nome { get; set; } = string.Empty;
-        public double Valor { get; set; }
+        public decimal Valor { get; set; }
     }
 }

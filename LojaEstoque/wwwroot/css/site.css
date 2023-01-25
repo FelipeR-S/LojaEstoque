@@ -245,8 +245,10 @@ body {
 }
 
 .form-group{
+  position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  height: 3.5rem;
   margin-block: 2rem;
   padding: 0;
 }
@@ -257,7 +259,8 @@ body {
 }
 
 .form-group input{
-  width: 100%;
+  width: 80%;
+  height: 2.2rem;
   color: var(--font-color);
   background: var(--bg-item);
   text-align: center;
@@ -268,8 +271,18 @@ body {
   color: var(--font-color);
 }
 
+.form-group span{
+  font-size: .8rem;
+  height: 1rem;
+  white-space: nowrap;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
 .form-cadastro--btn-enviar{
-  width: 100% !important;
+  width: 80% !important;
+  margin-left: auto;
   background: linear-gradient(45deg, rgb(0, 153, 255), rgb(17, 86, 216))!important;
   background-size: 1500% !important;
   background-position: 100% !important;
@@ -294,7 +307,7 @@ body {
   max-width: 90%;
   border: none;
   text-align: center;
-  padding: 5%;
+  padding: 2%;
   background: var(--bg-theme);
   color: var(--font-color);
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
@@ -314,7 +327,7 @@ body {
 .dialog__buttons{
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 1rem;
 }
 
