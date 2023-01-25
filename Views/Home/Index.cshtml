@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    var mensagem = TempData["mensagem"];
+}
+<asp:Content ID="Inicio" ContentPlaceHolderID="Inicio" runat="server">
+	<script type="module" src="~/js/inicio.js"></script>
+</asp:Content>
+@model List<Produto>
+<script>
+    let mensagemServer = @Json.Serialize(@mensagem);
+</script>
+    <div class="panel--header">
+        <div class="header__title"><h1>Produtos</h1></div>
+        <div class="header__busca">
+            <div class="search__bar">
+                <input type="text" class="header__busca--input" placeholder="Pesquisar produtos">
+                <button class="header__busca--button"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+            <ul class="autocomplete">
+                @foreach (var produto in @Model)
+                {
+                    <li aria-hidden="true">@produto.Nome</li>
+                }
+            </ul>
+        </div>
+        <div class="header__cadastro">
+        <button class="exibe--btn btn-default">Exibir tudo</button>
+        <a class="cadastro--btn btn-default" asp-action="Cadastro">Novo Item</a>
+        </div>
+    </div>
+<div class="lista-produtos">
+    <div class="lista-produtos__headers" aria-hidden="false">
+        <span class="item__id">ID</span>
+        <span class="item__nome">Nome do Produto</span>
+        <span class="item__valor">Valor</span>
+        <span class="item__actions">Ações</span>
+    </div>
+    <div class="lista-produtos__itens">
+    @foreach (var produto in @Model)
+    {
+        <div class="itens--item">
+            <span class="item__title" aria-hidden="true">ID: </span><span class="item__id">
+                @produto.Id
+            </span>
+            <span class="item__title" aria-hidden="true">Nome: </span><span class="item__nome">
+                @produto.Nome</span>
+            <span class="item__title" aria-hidden="true">Valor: </span><span class="item__valor">
+                R$ @produto.Valor.ToString().Replace(".", ",")</span>
+            <div class="item__actions"><a class="item__actions--edit btn-default" asp-action="Cadastro" asp-route-id="@produto.Id">Editar</a><button class="item__actions--confirm btn-default">Excluir</button><a aria-hidden="true" class="item__actions--delete btn-default" asp-action="Delete" asp-route-id="@produto.Id">Excluir</a></div>
+        </div>
+    }
+    <a class="delete--produto" aria-hidden="true" asp-action="Delete" asp-route-id="g_id" onclick="ChangeRouteId()">Editar</a>
+    </div>
+</div>
