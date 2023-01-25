@@ -1,43 +1,46 @@
-﻿const Search = {
-    input: document.querySelector('.header__busca--input'),
-    autocomplete: document.querySelector('.autocomplete'),
-    autocompleteOptions: Array.from(document.querySelector('.autocomplete').querySelectorAll('li')),
-    searchButton: document.querySelector('.header__busca--button'),
-    produtos: Array.from(document.querySelectorAll('.itens--item')),
-    InputListener(){
-        this.input.addEventListener('keyup', (e) => {
-            this.autocompleteOptions.forEach((item) =>{
-                if(!item.innerText.toLowerCase().startsWith(this.input.value.toLowerCase() || this.input.value != "")){
-                    item.ariaHidden = true;
-                }
-                else
-                    item.ariaHidden = false;
+﻿const Theme = {
+    body: document.querySelector('body'),
+    button: document.querySelector(".btn-theme"),
+    spans: Array.from(document.querySelector(".theme-mode").querySelectorAll("span")),
+    Select() {
+        this.button.addEventListener("click", (e) => {
+            let active = this.button.ariaChecked === "true";
+            this.ChangeTheme(active);
+        })
+        this.spans.forEach((span) => {
+            span.addEventListener("click", (e) => {
+                let active = this.button.ariaChecked === "true";
+                this.ChangeTheme(active);
             })
         })
     },
-    GetProduto(){
-        this.searchButton.addEventListener('click', (e) => {
-            if (this.input.value == "") return;
-            var item = this.produtos.find(i => i.querySelector(".item__nome").innerText.toLowerCase() == this.input.value.toLowerCase())
-            if (item == null){
-                alert("Produto não encontrado!")
-                this.produtos.forEach((item) => item.ariaHidden = false);
-                return;
-            } 
-            this.produtos.forEach((item) => item.ariaHidden = true);
-            item.ariaHidden = false;
-        })
+    ChangeTheme(active) {
+        if (!active) {
+            this.button.ariaChecked = true;
+            this.body.id = "dark";
+            localStorage.setItem("theme", this.body.id);
+            localStorage.setItem("btnStatus", this.button.ariaChecked);
+        }
+        else {
+            this.button.ariaChecked = false;
+            this.body.id = "light";
+            localStorage.setItem("theme", this.body.id);
+            localStorage.setItem("btnStatus", this.button.ariaChecked);
+        }
+
     },
-    AutoComplete(){
-        this.autocompleteOptions.forEach((item) => {
-            item.addEventListener('click', (e) => {
-                this.input.value = item.innerText;
-                console.log(this.input)
-            })
-        })
+    SetTheme() {
+        let theme = localStorage.getItem("theme");
+        let btnStatus = localStorage.getItem("btnStatus");
+        if (theme == null || btnStatus == null) return;
+
+        this.body.id = theme;
+        this.button.ariaChecked = btnStatus;
     }
 }
 
-Search.InputListener();
-Search.GetProduto();
-Search.AutoComplete();
+Theme.Select();
+
+window.addEventListener("load", (e) => {
+    Theme.SetTheme();
+})

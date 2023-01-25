@@ -8,9 +8,12 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/LojaEstoque.styles.css" asp-append-version="true" />
+    <asp:ContentPlaceHolder runat="server" ID="Inicio"></asp:ContentPlaceHolder>
+	<asp:ContentPlaceHolder runat="server" ID="Cadastro"></asp:ContentPlaceHolder>
 </head>
 <body>
-    <div class="main">
+    <div class="main" id="light">
+        <div class="upper--panel">Escolha um tema: <div class="theme-mode"><div class="btn-theme" aria-checked="false"></div><span>Light</span><span>Dark</span></div></div>
         <main role="main" class="pb-3">
             @RenderBody()
         </main>

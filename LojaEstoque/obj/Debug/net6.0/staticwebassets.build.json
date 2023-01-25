@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "txfrz8uScp2tmTXaTbeawc4HMKCVIMwAlmXy18Q4ZL8=",
+  "Hash": "jYmPTdSvyVzfwSIlYmNx0C2p4nYnz9vauPdNQOLgA1A=",
   "Source": "LojaEstoque",
   "BasePath": "_content/LojaEstoque",
   "Mode": "Default",
@@ -1103,6 +1103,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "E:\\Documentos\\FELIPE\\Programação\\Projetos\\LojaEstoque\\LojaEstoque\\wwwroot\\js\\cadastro.js",
+      "SourceId": "LojaEstoque",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Documentos\\FELIPE\\Programação\\Projetos\\LojaEstoque\\LojaEstoque\\wwwroot\\",
+      "BasePath": "_content/LojaEstoque",
+      "RelativePath": "js/cadastro.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\cadastro.js"
+    },
+    {
+      "Identity": "E:\\Documentos\\FELIPE\\Programação\\Projetos\\LojaEstoque\\LojaEstoque\\wwwroot\\js\\inicio.js",
+      "SourceId": "LojaEstoque",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Documentos\\FELIPE\\Programação\\Projetos\\LojaEstoque\\LojaEstoque\\wwwroot\\",
+      "BasePath": "_content/LojaEstoque",
+      "RelativePath": "js/inicio.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\inicio.js"
     },
     {
       "Identity": "E:\\Documentos\\FELIPE\\Programação\\Projetos\\LojaEstoque\\LojaEstoque\\wwwroot\\js\\site.js",

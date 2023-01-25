@@ -1,7 +1,9 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
+<asp:Content ID="Inicio" ContentPlaceHolderID="Inicio" runat="server">
+	<script type="module" src="~/js/inicio.js"></script>
+</asp:Content>
 @model List<Produto>
     <div class="panel--header">
         <div class="header__title"><h1>Produtos</h1></div>
@@ -30,7 +32,7 @@
     <div class="lista-produtos__itens">
     @foreach (var produto in @Model)
     {
-        <div class="itens--item" value="@produto.Nome">
+        <div class="itens--item">
             <span class="item__id">
                 <span class="item__title" aria-hidden="true">ID: </span>@produto.Id
             </span>
