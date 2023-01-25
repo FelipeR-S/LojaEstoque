@@ -1,3 +1,8 @@
+import { modal } from './modal.js';
+const modalClass = new modal();
+modalClass.CloseModal();
+modalClass.Confirm();
+
 const Search = {
     input: document.querySelector('.header__busca--input'),
     autocomplete: document.querySelector('.autocomplete'),
@@ -38,6 +43,21 @@ const Search = {
     }
 }
 
+const Produto = {
+    produtos: Array.from(document.querySelectorAll('.itens--item')),
+    Excluir(){
+        this.produtos.forEach((produto) => {
+            let btn = produto.querySelector(".item__actions--delete");
+            btn.addEventListener('click', (e) => {
+                let id = produto.querySelector('.item__id');
+                let nome = produto.querySelector('.item__nome');
+                modalClass.OpenModal(`Deseja realmente excluír o produto abaixo? <br> ID: ${id.innerText} | Nome: ${nome.innerText}`);
+            })
+        })
+    }
+}
+
+Produto.Excluir();
 Search.InputListener();
 Search.GetProduto();
 Search.AutoComplete();

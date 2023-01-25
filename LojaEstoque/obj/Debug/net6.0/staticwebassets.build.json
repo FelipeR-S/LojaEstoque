@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "jYmPTdSvyVzfwSIlYmNx0C2p4nYnz9vauPdNQOLgA1A=",
+  "Hash": "ELlAwem/vTu+I7WBffEmcPl2ORELcMknB3pErmyFDn0=",
   "Source": "LojaEstoque",
   "BasePath": "_content/LojaEstoque",
   "Mode": "Default",
@@ -1137,6 +1137,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\inicio.js"
+    },
+    {
+      "Identity": "E:\\Documentos\\FELIPE\\Programação\\Projetos\\LojaEstoque\\LojaEstoque\\wwwroot\\js\\modal.js",
+      "SourceId": "LojaEstoque",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Documentos\\FELIPE\\Programação\\Projetos\\LojaEstoque\\LojaEstoque\\wwwroot\\",
+      "BasePath": "_content/LojaEstoque",
+      "RelativePath": "js/modal.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\modal.js"
     },
     {
       "Identity": "E:\\Documentos\\FELIPE\\Programação\\Projetos\\LojaEstoque\\LojaEstoque\\wwwroot\\js\\site.js",

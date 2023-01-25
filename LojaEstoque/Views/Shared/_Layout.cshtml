@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/LojaEstoque.styles.css" asp-append-version="true" />
     <asp:ContentPlaceHolder runat="server" ID="Inicio"></asp:ContentPlaceHolder>
-	<asp:ContentPlaceHolder runat="server" ID="Cadastro"></asp:ContentPlaceHolder>
+    <asp:ContentPlaceHolder runat="server" ID="Cadastro"></asp:ContentPlaceHolder>
 </head>
 <body>
     <div class="main" id="light">
@@ -20,6 +20,15 @@
     </div>
 
     <footer class="border-top footer text-muted">
+        <dialog class="layout__dialog layout__dialog--backdrop">
+            <div class="dialog__action">
+                <p class="dialog__message"></p>
+            </div>
+            <div class="dialog__buttons">
+                <button class="dialog__confirm btn-default">Confirmar</button>
+                <button class="dialog__close btn-default">Fechar</button>
+            </div>
+        </dialog>
         <div class="container">
             &copy; 2023 - LojaEstoque
         </div>
