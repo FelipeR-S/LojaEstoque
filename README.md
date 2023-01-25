@@ -14,7 +14,7 @@
 
 <p>O objetivo do sistema é realizar visualização, cadastro, alteração e exclusão de produtos em um banco de dados.</p>
 <p>O banco de dados funciona através de migrations que é implementada por ferramentas do Entity Framework.</p>
-<p>Para administrar como serão salvo os dados e como serão geridos a aplicação conta com classes de repositório, sendo que cada classe é especifica para manutenção de sua tabela.</p> 
+<p>Para administrar como serão salvos os dados e como serão geridos a aplicação conta com classes de repositório, sendo que cada classe é especifica para manutenção de sua tabela.</p> 
 <p>Os objetos que dão os atributos necessários para o funcionamento da aplicação encontram-se na classe modelo, fazendo parte da MODEL no MVC. </p>
 
 
@@ -40,8 +40,8 @@
 <p align="center"><img alt="formulario cadastrar" title="cadastrar" src="./GitImages/cadastrar.jpg"/></p>
 <br>
 <h2><b>Avisos e Mensagens</b></h2>
-<p>Ao tentar excluír será exibido um dialogo para confirmação, após clicar no mesmo o produto será excluído do banco de dados.</p>
-<p>O mesmo painel de dialogo é utilizado para exibir confirmações de todas as ações.</p>
+<p>Ao tentar excluír será exibido um diálogo para confirmação, após clicar no mesmo o produto será excluído do banco de dados.</p>
+<p>O mesmo painel de diálogo é utilizado para exibir confirmações de todas as ações.</p>
 <p align="center"><img alt="avisos" title="avisos" src="./GitImages/aviso-excluir.jpg"/></p>
 <br>
 <h2><b>Seleção de temas</b></h2>
