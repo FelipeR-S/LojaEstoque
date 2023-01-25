@@ -2,7 +2,44 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@model List<Produto>
+    <div class="panel--header">
+        <div class="header__title"><h1>Produtos</h1></div>
+        <div class="header__busca">
+            <div class="search__bar">
+                <input type="text" class="header__busca--input" placeholder="Pesquisar produtos">
+                <button class="header__busca--button"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+            <div class="autocomplete">
+                @foreach (var produto in @Model)
+                {
+                    <li aria-hidden="true">@produto.Nome</li>
+                }
+            </div>
+        </div>
+        <div class="header__cadastro">
+        <a class="cadastro--btn btn-default" asp-action="Cadastro">Novo Item</a></div>
+    </div>
+<div class="lista-produtos">
+    <div class="lista-produtos__headers" aria-hidden="false">
+        <span class="item__id">ID</span>
+        <span class="item__nome">Nome do Produto</span>
+        <span class="item__valor">Valor</span>
+        <span class="item__actions">Ações</span>
+    </div>
+    <div class="lista-produtos__itens">
+    @foreach (var produto in @Model)
+    {
+        <div class="itens--item" value="@produto.Nome">
+            <span class="item__id">
+                <span class="item__title" aria-hidden="true">ID: </span>@produto.Id
+            </span>
+            <span class="item__nome">
+                <span class="item__title" aria-hidden="true">Nome: </span>@produto.Nome</span>
+            <span class="item__valor">
+                <span class="item__title" aria-hidden="true">Valor: </span>R$ @produto.Valor.ToString("F2")</span>
+            <div class="item__actions"><a class="item__actions--edit btn-default" asp-action="Cadastro" asp-route-id="@produto.Id">Editar</a><button class="item__actions--delete btn-default">Excluir</button></div>
+        </div>
+    }
+    </div>
 </div>

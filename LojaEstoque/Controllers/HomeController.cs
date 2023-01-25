@@ -21,6 +21,16 @@ namespace LojaEstoque.Controllers
             return View(await _produtoRepository.GetAllProdutos());
         }
 
+        public async Task<IActionResult> Cadastro(int id)
+        {
+            var produto = new Produto();
+            var produtoDB = await _produtoRepository.GetProduto(id);
+
+            if (produtoDB is not null) produto = produtoDB;
+
+            return View(produto);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
