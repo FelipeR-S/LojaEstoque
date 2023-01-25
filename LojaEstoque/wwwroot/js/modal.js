@@ -7,16 +7,19 @@ const btnConfirm = document.querySelector('.dialog__confirm');
 const message = document.querySelector('.dialog__message');
 
 export class modal {
+    //Abre dialog Modal
     OpenModal(text, hideConfirm = true) {
         message.innerHTML = text;
         btnConfirm.ariaHidden = hideConfirm;
         dialog.showModal();
     }
+    //Aguarda click no botão de fechar
     CloseModal() {
         btnFechaModal.addEventListener('click', (e) => {
            this.DialogClose();            
         })
     }
+    //Fecha modal
     DialogClose(){
         message.innerHTML = "";
         dialog.close();

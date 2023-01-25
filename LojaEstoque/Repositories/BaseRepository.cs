@@ -4,6 +4,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LojaEstoque.Repositories
 {
+    /// <summary>
+    /// Base para administração de banco de dados de acordo com o objeto
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public abstract class BaseRepository<T> where T : BaseModel
     {
         protected readonly ApplicationDbContext _context;

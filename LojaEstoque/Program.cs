@@ -20,10 +20,12 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
+//Cria serviços relativos ao negócio
 builder.Services.AddTransient<IDataService, DataService>();
 builder.Services.AddTransient<ApplicationDbContext>();
 builder.Services.AddTransient<IProdutoRepository, ProdutoRepository>();
 
+//Tradução para mensagem de erro durante cadastro de formulário
 builder.Services.AddRazorPages().AddMvcOptions(options =>
 {
     options.ModelBindingMessageProvider.SetValueMustBeANumberAccessor(
@@ -58,6 +60,7 @@ app.UseRouting();
 
 app.UseSession();
 
+//Configuração para converter valores float e decimal durante cadastro de formulario
 app.Use(async (context, next) =>
 {
     var currentThreadCulture = (CultureInfo)Thread.CurrentThread.CurrentCulture.Clone();
