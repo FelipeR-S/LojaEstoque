@@ -50,6 +50,13 @@ namespace LojaEstoque.Controllers
             return RedirectToAction("Index");
         }
 
+        public async Task<IActionResult> Delete(int id)
+        {
+            var mensagem = await _produtoRepository.DeleteProduto(id);
+            HttpContext.Session.SetString("mensagem", mensagem);
+            return RedirectToAction("Index");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
