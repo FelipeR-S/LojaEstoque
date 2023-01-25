@@ -16,7 +16,14 @@ namespace LojaEstoque.Models
         public Produto()
         {
         }
-        public string Nome { get; set; } = string.Empty;
 
+        public Produto(string nome, double valor)
+        {
+            Nome = nome;
+            Valor = valor;
+        }
+
+        public string Nome { get; set; } = string.Empty;
+        public double Valor { get; set; }
     }
 }

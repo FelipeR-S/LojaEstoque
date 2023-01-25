@@ -16,5 +16,7 @@ namespace LojaEstoque.Data
             builder.Entity<Produto>();
             base.OnModelCreating(builder);
         }
+
+        public DbSet<LojaEstoque.Models.Produto> Produto { get; set; }
     }
 }
