@@ -15,10 +15,6 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = E:\Documentos\FELIPE\Programação\Projetos\LojaEstoque\LojaEstoque
 build_property._RazorSourceGeneratorDebug = 
 
-[E:/Documentos/FELIPE/Programação/Projetos/LojaEstoque/LojaEstoque/Areas/Identity/Pages/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [E:/Documentos/FELIPE/Programação/Projetos/LojaEstoque/LojaEstoque/Views/Home/Cadastro.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDYWRhc3Ryby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

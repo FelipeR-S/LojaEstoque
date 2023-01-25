@@ -1,26 +1,27 @@
 const dialog = document.querySelector('.layout__dialog');
 //Buttons
 const btnFechaModal = document.querySelector('.dialog__close');
-const btnConfirma = document.querySelector('.dialog__confirm');
+const btnConfirm = document.querySelector('.dialog__confirm');
 
 //Message
 const message = document.querySelector('.dialog__message');
 
-
 export class modal {
-    OpenModal(text){
+    //Abre dialog Modal
+    OpenModal(text, hideConfirm = true) {
         message.innerHTML = text;
+        btnConfirm.ariaHidden = hideConfirm;
         dialog.showModal();
     }
-    CloseModal(){
+    //Aguarda click no botão de fechar
+    CloseModal() {
         btnFechaModal.addEventListener('click', (e) => {
-            message.innerHTML = "";
-            dialog.close();
+           this.DialogClose();            
         })
     }
-    Confirm(){
-        btnConfirma.addEventListener('click', (e) => {
-            console.log(location.href)
-        })
+    //Fecha modal
+    DialogClose(){
+        message.innerHTML = "";
+        dialog.close();
     }
 }
