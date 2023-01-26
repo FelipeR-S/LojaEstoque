@@ -30,22 +30,26 @@
     </div>
 <div class="lista-produtos">
     <div class="lista-produtos__headers" aria-hidden="false">
-        <span class="item__id">ID</span>
-        <span class="item__nome">Nome do Produto</span>
-        <span class="item__valor">Valor</span>
-        <span class="item__actions">Ações</span>
+        <span>ID</span>
+        <span>Nome do Produto</span>
+        <span>Valor</span>
+        <span>Ações</span>
     </div>
     <div class="lista-produtos__itens">
     @foreach (var produto in @Model)
     {
         <div class="itens--item">
-            <span class="item__title" aria-hidden="true">ID: </span><span class="item__id">
+            <div class="item__info"><span class="item__title" aria-hidden="true">ID: </span><span class="item__id">
                 @produto.Id
-            </span>
-            <span class="item__title" aria-hidden="true">Nome: </span><span class="item__nome">
+            </span></div>
+            <div class="item__info">
+                            <span class="item__title" aria-hidden="true">Nome: </span><span class="item__nome">
                 @produto.Nome</span>
-            <span class="item__title" aria-hidden="true">Valor: </span><span class="item__valor">
+            </div>
+            <div class="item__info">
+                            <span class="item__title" aria-hidden="true">Valor: </span><span class="item__valor">
                 R$ @produto.Valor.ToString().Replace(".", ",")</span>
+            </div>
             <div class="item__actions"><a class="item__actions--edit btn-default" asp-action="Cadastro" asp-route-id="@produto.Id">Editar</a><button class="item__actions--confirm btn-default">Excluir</button><a aria-hidden="true" class="item__actions--delete btn-default" asp-action="Delete" asp-route-id="@produto.Id">Excluir</a></div>
         </div>
     }

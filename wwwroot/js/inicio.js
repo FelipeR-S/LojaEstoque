@@ -63,6 +63,8 @@ const Produto = {
     confirmDelete: document.querySelectorAll('.item__actions--confirm'),
     delete: document.querySelector('.dialog__confirm'),
     element: "",
+    produtoHeaders: document.querySelector('.lista-produtos__headers'),
+    produtoTitle: Array.from(document.querySelectorAll('.item__title')),
     //Exibe aviso antes de deletar produto
     DeleteWarning(){
         this.confirmDelete.forEach((btn) => {
@@ -83,13 +85,29 @@ const Produto = {
             let link = this.element.querySelector('.item__actions--delete');
             link.click();
         })        
+    },
+    ShowMobile(){
+        if(window.innerWidth > 800){
+            this.produtoHeaders.ariaHidden = false;
+            this.produtoTitle.forEach((item) => item.ariaHidden = true);
+        }   
+        else{
+            this.produtoHeaders.ariaHidden = true;
+            this.produtoTitle.forEach((item) => item.ariaHidden = false);
+        }
     }
 }
 
 window.addEventListener("load", (e) => {
+    //Setup para mobile
+    Produto.ShowMobile();
     //Verifica se há alguma mensagem para ser exibida após o load
     if (mensagemServer != null && mensagemServer != "") 
         modalClass.OpenModal(mensagemServer);
+})
+
+window.addEventListener("resize", (e) => {
+    Produto.ShowMobile();
 })
 
 Search.InputListener();
